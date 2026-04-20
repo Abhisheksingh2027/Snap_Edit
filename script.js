@@ -1,61 +1,61 @@
 const filters ={
-    brightness:{
+    Brightness:{
         value:100,
         min:0,
         max:200,
         unit:"%"
     },
-    contras:{
+    Contras:{
         value:100,
         min:0,
         max:200,
          unit:"%"
 
     },
-    exposer : {
+    Exposer : {
         value:100,
         min:0,
         max:200,
         unit:"%"
     },
-    saturation :{
+    Saturation :{
         value:100,
         min:0,
         max:200,
         unit:"%"
     },
-    hueRotation :{
+    HueRotation :{
         value:0,
         min:0,
         max:360,
         unit:"deg"
     },
-    blur:{
+    Blur:{
         value:0,
         min:0,
         max:20,
         unit:"px"
     },
-    grayscale :{
+    GrayScale :{
         value:0,
         min:0,
         max:100,
         unit:"%"
     },
-    sepia :{
+    Sepia :{
         value:0,
         min:0,
         max:100,
         unit:"%"
     },
-    opacity:{
+    Opacity:{
         value:100,
         min:0,
         max:100,
         unit:"%"
     },
 
-    invert:{
+    Invert:{
         value:0,
         min:0,
         max:100,
@@ -64,10 +64,15 @@ const filters ={
 
 }
 
+const imageCanvas = document.querySelector("#image-canvas");
+const imgInput= document.querySelector("#image-input");
+
+
+// const filtersContainer = document.querySelector(".filters");
 
 function createFilterElement(name, unit="%",value,min,max){
     const div = document.createElement("div");
-    div.classList.add("filters");
+    div.classList.add("filter");
 
     const input= document.createElement("input");
     input.type="range";
@@ -87,6 +92,31 @@ function createFilterElement(name, unit="%",value,min,max){
 
 }
 
-Object.keys(filters).forEach(key =>{
-    console.log(key);
+document.addEventListener("DOMContentLoaded", () => {
+    const filtersContainer = document.querySelector(".filters");
+    // const canvasCtx = imageCanvas.getContext("2d");
+
+    Object.keys(filters).forEach(key => {
+        const filterElement = createFilterElement(
+            key,
+            filters[key].unit,
+            filters[key].value,
+            filters[key].min,
+            filters[key].max
+        );
+        filtersContainer.appendChild(filterElement);
+    });
+});
+
+imgInput.addEventListener("change",(event)=>{
+    const file= event.target.files[0]; // choose the file           
+    const img= new Image();
+    img.src= URL.createObjectURL(file);
+
+    img.onload = () =>{
+        canvasCtx.drawImage(img, 0,0);
+
+    }
+
+
 })
