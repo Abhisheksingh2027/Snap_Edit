@@ -13,8 +13,6 @@
     --text-tertiary-color:rgb(150,150,150);
     --text-active-color:rgb(24,24,24);
 
-    
-
 
     /* padding*/
     --padding-sm:0.5rem;
@@ -51,9 +49,5 @@
     --border-redius-lg:0.3rem;
     --border-redius-xl:0.4rem;
     --border-redius-2xl:0.5rem;
-
-
-
-
 
 }

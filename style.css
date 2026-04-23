@@ -144,3 +144,9 @@ canvas{
     max-width: 90%;
     max-height: 80vh;
 }
+
+.presets{
+   display: flex;
+   flex-wrap: wrap; 
+   gap:var(--gutter-md);
+}
